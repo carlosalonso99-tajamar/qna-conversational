@@ -1,0 +1,237 @@
+[
+    {
+      "text": "Can you share details about the crewAI agent system?",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getAgentInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 32,
+          "length": 6
+        }
+      ]
+    },
+    {
+      "text": "I want to know more about the langGraph agent configuration.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getAgentInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 30,
+          "length": 9
+        }
+      ]
+    },
+    {
+      "text": "Please provide the profile of the crewAI agent.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getAgentInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 34,
+          "length": 6
+        }
+      ]
+    },
+    {
+      "text": "Show me the specifications of the langGraph agent.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getAgentInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 35,
+          "length": 9
+        }
+      ]
+    },
+    {
+      "text": "What are the capabilities of the crewAI agent?",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getAgentInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 33,
+          "length": 6
+        }
+      ]
+    },
+    {
+      "text": "I need a summary of the langGraph agent's features.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getAgentInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 24,
+          "length": 9
+        }
+      ]
+    },
+    {
+      "text": "Give me an overview of the crewAI framework.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getFrameworkInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 27,
+          "length": 6
+        }
+      ]
+    },
+    {
+      "text": "Explain the structure of the langGraph framework in detail.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getFrameworkInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 29,
+          "length": 9
+        }
+      ]
+    },
+    {
+      "text": "I am interested in the underlying technology of the crewAI framework.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getFrameworkInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 53,
+          "length": 6
+        }
+      ]
+    },
+    {
+      "text": "Can you detail the architecture of the langGraph framework?",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getFrameworkInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 39,
+          "length": 9
+        }
+      ]
+    },
+    {
+      "text": "What is the core design behind the crewAI framework?",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getFrameworkInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 35,
+          "length": 6
+        }
+      ]
+    },
+    {
+      "text": "Show me how the langGraph framework operates in real-time.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getFrameworkInfo",
+      "entities": [
+        {
+          "category": "framework",
+          "offset": 16,
+          "length": 9
+        }
+      ]
+    },
+    {
+      "text": "I want to see the list of available tools, especially the Backup tool.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getToolInfo",
+      "entities": [
+        {
+          "category": "tool",
+          "offset": 58,
+          "length": 6
+        }
+      ]
+    },
+    {
+      "text": "Provide detailed specs for the Analytics tool.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getToolInfo",
+      "entities": [
+        {
+          "category": "tool",
+          "offset": 31,
+          "length": 9
+        }
+      ]
+    },
+    {
+      "text": "What are the main functions of the Reporting tool?",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getToolInfo",
+      "entities": [
+        {
+          "category": "tool",
+          "offset": 35,
+          "length": 9
+        }
+      ]
+    },
+    {
+      "text": "How does the Monitoring tool work?",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getToolInfo",
+      "entities": [
+        {
+          "category": "tool",
+          "offset": 13,
+          "length": 10
+        }
+      ]
+    },
+    {
+      "text": "Could you list the features of the Security tool?",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getToolInfo",
+      "entities": [
+        {
+          "category": "tool",
+          "offset": 35,
+          "length": 8
+        }
+      ]
+    },
+    {
+      "text": "Give me the benefits of using the Backup tool.",
+      "language": "en-us",
+      "dataset": "production",
+      "intent": "getToolInfo",
+      "entities": [
+        {
+          "category": "tool",
+          "offset": 34,
+          "length": 6
+        }
+      ]
+    }
+  ]
+  
