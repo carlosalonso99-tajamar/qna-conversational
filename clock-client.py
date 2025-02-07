@@ -50,7 +50,7 @@ if "intent_data" not in st.session_state:
 if "qna_reply" not in st.session_state:
     st.session_state.qna_reply = ""
 
-def process_question(question):
+def process_question(question, min_confidence):
     try:
         # Análisis de conversación para intenciones y entidades
         credential_lu = AzureKeyCredential(service_key)
@@ -108,7 +108,17 @@ def process_question(question):
             project_name=st.session_state.selected_project,
             deployment_name=qa_deployment_name
         )
-        reply = response.answers[0].answer if response.answers else "No se encontró una respuesta relevante."
+        if response.answers:
+            answer = response.answers[0].answer  # Mejor respuesta
+            confidence = response.answers[0].confidence
+            source = response.answers[0].source or "Desconocida"
+            if confidence < min_confidence:
+                reply = ("La confianza en la respuesta es baja. "
+                         "Por favor, inténtelo de nuevo o revise la información.")
+            else:
+                reply = f"**Respuesta:** {answer}\n\n**Confianza:** {confidence:.2f}\n\n**Fuente:** {source}"
+        else:
+            reply = "No se encontró una respuesta relevante."
         st.session_state.qna_reply = reply
 
         # Guardar el historial de mensajes
@@ -120,14 +130,18 @@ def process_question(question):
 # Título principal
 st.title("Azure Chat con Análisis de Intenciones y Entidades")
 
-# Mostrar todos los ejemplos en la barra lateral, agrupados por proyecto
-st.sidebar.header("Ejemplos de Preguntas")
-for project, questions in example_questions.items():
-    st.sidebar.subheader(project)
-    for question in questions:
-        if st.sidebar.button(question, key=f"{project}_{question}"):
-            st.session_state.selected_project = project
-            process_question(question)
+# Mostrar ejemplos y configuración en la barra lateral
+with st.sidebar:
+    st.write("### Configuración")
+    # Usar una clave distinta para el slider, para evitar conflictos
+    min_confidence = st.slider("Confianza mínima", 0.0, 1.0, 0.3, 0.01, key="slider_min_confidence")
+    st.write("### Ejemplos de Preguntas")
+    for project, questions in example_questions.items():
+        st.sidebar.subheader(project)
+        for question in questions:
+            if st.sidebar.button(question, key=f"{project}_{question}"):
+                st.session_state.selected_project = project
+                process_question(question, min_confidence)
 
 # Formulario para ingresar la pregunta manualmente
 with st.form("chat_form", clear_on_submit=True):
@@ -135,10 +149,12 @@ with st.form("chat_form", clear_on_submit=True):
     submit_button = st.form_submit_button("Enviar")
 
 if submit_button and user_question:
-    process_question(user_question)
+    # Usar el valor actual del slider
+    min_conf = st.session_state.get("slider_min_confidence", 0.7)
+    process_question(user_question, min_conf)
 
-# Ahora, después de procesar la pregunta, se muestra el proyecto actual actualizado
-st.markdown(f"### Hay dos proyectos de QnA\nProyecto actual(Decidico a partir de la intención): **{st.session_state.selected_project}**")
+# Mostrar el proyecto actual
+st.markdown(f"### Hay dos proyectos de QnA\nProyecto actual (Decidido a partir de la intención): **{st.session_state.selected_project}**")
 
 # Mostrar el análisis actualizado después de procesar la pregunta
 st.header("Análisis de Intenciones y Entidades")
@@ -150,7 +166,7 @@ if st.session_state.intent_data["entities"]:
 else:
     st.markdown("No se han detectado entidades.")
 
-# Sección secundaria: Respuesta QnA (Menor importancia)
+# Sección secundaria: Respuesta QnA
 st.header("Respuesta del QnA")
 with st.expander("Mostrar/Ocultar respuesta QnA"):
     st.write(st.session_state.qna_reply)
